@@ -22,7 +22,7 @@ class WebpackIconvPlugin{
 
   apply(compiler){
     const iconv = new Iconv(this.from, this.to);
-    compiler.plugin("after-compile", function(compilation, cb){
+    compiler.plugin("after-compile", (compilation, cb) => {
       Object.keys(compilation.assets).forEach((assetName) => {
         let asset = compilation.assets[assetName];
         asset._value = iconv.convert(this._beforeTranslate(asset._value));
